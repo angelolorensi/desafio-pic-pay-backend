@@ -1,6 +1,7 @@
 package com.desafio.picpay.desafiopicpay.service;
 
 import com.desafio.picpay.desafiopicpay.exception.InsufficientBalanceException;
+import com.desafio.picpay.desafiopicpay.exception.UserNotFoundException;
 import com.desafio.picpay.desafiopicpay.exception.UserTypeUnauthorizedException;
 import com.desafio.picpay.desafiopicpay.model.User;
 import com.desafio.picpay.desafiopicpay.model.UserType;
@@ -26,6 +27,10 @@ public class UserService {
             throw new InsufficientBalanceException();
         }
 
+    }
+
+    public User getUserById(Long id){
+        return userRepository.findUserById(id).orElseThrow(UserNotFoundException::new);
     }
 
 }
