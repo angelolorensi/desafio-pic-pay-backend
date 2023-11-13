@@ -33,4 +33,8 @@ public class UserService {
         return userRepository.findUserById(id).orElseThrow(UserNotFoundException::new);
     }
 
+    public void saveUser(User user){
+        userRepository.save(user);
+    }
+
 }
