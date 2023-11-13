@@ -27,7 +27,7 @@ public class TransactionService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public void createTransaction(TransactionDTO transactionDTO) throws Exception {
+    public Transaction createTransaction(TransactionDTO transactionDTO) throws Exception {
         User sender = userService.getUserById(transactionDTO.senderId());
         User receiver = userService.getUserById(transactionDTO.receiverId());
 
@@ -50,6 +50,8 @@ public class TransactionService {
         transactionRepository.save(newTransaction);
         userService.saveUser(sender);
         userService.saveUser(receiver);
+
+        return newTransaction;
     }
 
     public boolean authorizeTransaction(User sender, BigDecimal value){
