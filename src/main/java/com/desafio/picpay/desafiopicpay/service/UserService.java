@@ -1,5 +1,6 @@
 package com.desafio.picpay.desafiopicpay.service;
 
+import com.desafio.picpay.desafiopicpay.dto.UserDTO;
 import com.desafio.picpay.desafiopicpay.exception.InsufficientBalanceException;
 import com.desafio.picpay.desafiopicpay.exception.UserNotFoundException;
 import com.desafio.picpay.desafiopicpay.exception.UserTypeUnauthorizedException;
@@ -31,6 +32,12 @@ public class UserService {
 
     public User getUserById(Long id){
         return userRepository.findUserById(id).orElseThrow(UserNotFoundException::new);
+    }
+
+    public User createUser(UserDTO userDTO){
+        User newUser = new User(userDTO);
+        saveUser(newUser);
+        return newUser;
     }
 
     public void saveUser(User user){
