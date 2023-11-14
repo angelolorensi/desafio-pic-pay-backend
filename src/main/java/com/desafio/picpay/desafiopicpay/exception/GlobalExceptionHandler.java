@@ -11,7 +11,33 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity<String> handleDataIntegrityViolationException(DataIntegrityViolationException e) {
-        return new ResponseEntity<>("Email or CPF already registered, please insert a new one!", HttpStatus.BAD_REQUEST);
+    public ResponseEntity<String> handleDataIntegrityViolationException() {
+        return new ResponseEntity<>("User already registered, please insert a new one!", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UserTypeUnauthorizedException.class)
+    public ResponseEntity<String> handleUserTypeUnauthorizedException() {
+        return new ResponseEntity<>("Your user type is not allowed to perform transactions!", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<String> handleUserNotFoundException() {
+        return new ResponseEntity<>("User not found!", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(TransactionBlockedByPicPayException.class)
+    public ResponseEntity<String> handleTransactionBlockedByPicPayException() {
+        return new ResponseEntity<>("Your transaction was blocked by pic pay", HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(UnableToSendNotificationException.class)
+    public ResponseEntity<String> handleUnableToSendNotificationException() {
+        return new ResponseEntity<>("Unable to send notification", HttpStatus.BAD_REQUEST);
+    }
+
+
+    @ExceptionHandler(InsufficientBalanceException.class)
+    public ResponseEntity<String> handleInsufficientBalanceException() {
+        return new ResponseEntity<>("Insufficient Balance", HttpStatus.BAD_REQUEST);
     }
 }
