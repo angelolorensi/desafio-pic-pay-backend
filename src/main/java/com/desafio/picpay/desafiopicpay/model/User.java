@@ -3,12 +3,14 @@ package com.desafio.picpay.desafiopicpay.model;
 import com.desafio.picpay.desafiopicpay.dto.UserDTO;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
 @Entity
 @Table(name = "user")
 @Data
+@NoArgsConstructor
 public class User {
 
     @Id

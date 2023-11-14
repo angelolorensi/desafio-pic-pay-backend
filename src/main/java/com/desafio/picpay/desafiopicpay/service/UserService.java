@@ -25,7 +25,7 @@ public class UserService {
             throw new UserTypeUnauthorizedException();
         }
 
-        if(sender.getBalance().compareTo(value) > 0){
+        if(sender.getBalance().compareTo(value) < 0){
             throw new InsufficientBalanceException();
         }
 
