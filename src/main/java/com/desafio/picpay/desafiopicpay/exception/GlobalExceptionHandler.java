@@ -35,7 +35,6 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>("Unable to send notification", HttpStatus.BAD_REQUEST);
     }
 
-
     @ExceptionHandler(InsufficientBalanceException.class)
     public ResponseEntity<String> handleInsufficientBalanceException() {
         return new ResponseEntity<>("Insufficient Balance", HttpStatus.BAD_REQUEST);
